@@ -1,0 +1,15 @@
+{
+  "name": "bubble",
+  "version": "0.0.1",
+  "author": {
+    "name": "Pedro Teixeira"
+  },
+  "tags": ["flow control", "error handling", "domains"],
+  "main": "./hickup.js",
+  "devDependencies": {
+    "tap": "*"
+  },
+  "scripts": {
+    "test": "node node_modules/tap/bin/tap.js test.js"
+  }
+}
