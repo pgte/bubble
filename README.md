@@ -13,7 +13,7 @@ With timeouts (if you will).
 var bubble = require('bubble')
 var timeout = 2000;
 
-http.createServer(function(req, res) {
+require('http').createServer(function(req, res) {
 
   var b = bubble(timeout, function(err, file_c_data) {
     if (err) {
