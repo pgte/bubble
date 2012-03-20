@@ -37,7 +37,7 @@ require('http').createServer(function(req, res) {
 ## You can also leave out the timeout:
 
 ```javascript
-var b = bubble(timeout, function(err, file_c_data) {
+var b = bubble(function(err, file_c_data) {
   // ...
 });
 ```
