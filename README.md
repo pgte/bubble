@@ -26,9 +26,9 @@ require('http').createServer(function(req, res) {
     }
   });
 
-  fs.readFile('./file_a', h(function(file_a_data) {
-    fs.readFile('./file_b', h(function(file_b_data) {
-      fs.readFile('./file_c', h())
+  fs.readFile('./file_a', b(function(file_a_data) {
+    fs.readFile('./file_b', b(function(file_b_data) {
+      fs.readFile('./file_c', b())
     })
   }))
 })
@@ -41,7 +41,7 @@ var b = bubble(function(err, file_c_data) {
   // ...
 });
 
-fs.readFile('./file_a', h(function(file_a_data) {
+fs.readFile('./file_a', b(function(file_a_data) {
   // ...
 });
 
