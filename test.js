@@ -7,6 +7,7 @@ var DEFAULT_TIMEOUT = 10000
 test('figures out completion', function(t) {
 
   var b = bubble(DEFAULT_TIMEOUT, function(err) {
+    t.ok(! err, 'no error')
     t.ok(true, 'must reach here')
     t.end();
   })
