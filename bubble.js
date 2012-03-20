@@ -28,7 +28,7 @@ function bubble(timeout, callback) {
 
   function wrapper(cb) {
 
-    renewed = true;
+    renewed = true
 
     if (cb && (typeof cb != 'function')) { throw new Error('Please provide a callback to bubble')}
 
@@ -54,7 +54,7 @@ function bubble(timeout, callback) {
     }
   }
 
-  return wrapper;
+  return wrapper
 }
 
 module.exports = bubble;
