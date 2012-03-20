@@ -1,4 +1,4 @@
-# Bubble
+# Bubble [![Build Status](https://secure.travis-ci.org/pgte/bubble.png)](http://travis-ci.org/pgte/bubble)
 
 Aborts groups of callbacks.
 

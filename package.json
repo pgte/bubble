@@ -1,11 +1,17 @@
 {
   "name": "bubble",
-  "version": "0.0.3",
+  "description": "Domains for the poor man",
+  "version": "0.0.4",
   "author": {
     "name": "Pedro Teixeira"
   },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/pgte/bubble.git" 
+  },
   "tags": ["flow control", "error handling", "domains"],
   "main": "./bubble.js",
+  "engines": { "node": ">= 0.4.0" },
   "devDependencies": {
     "tap": "*"
   },
