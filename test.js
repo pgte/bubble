@@ -79,3 +79,15 @@ test('can use it to return callback values', function(t) {
   fs.readFile('./fixtures/exists', 'utf8', b());
 
 })
+
+test('allows nested callbacks', function(t) {
+  var b = bubble(10, function(err, fileData) {
+    t.ok(! err, 'error must not exist')
+    t.equal('DEF', fileData)
+    t.end()
+  })
+
+  fs.readFile('./fixtures/exists', 'utf8', b(function(body) {
+    fs.readFile('./fixtures/exists2', 'utf8', b())
+  }))
+})
