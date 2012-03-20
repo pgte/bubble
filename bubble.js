@@ -1,4 +1,4 @@
-function hickup(timeout, callback) {
+function bubble(timeout, callback) {
   var isDone = false
     , renewed = false
     , timer;
@@ -57,4 +57,4 @@ function hickup(timeout, callback) {
   return wrapper;
 }
 
-module.exports = hickup;
+module.exports = bubble;
