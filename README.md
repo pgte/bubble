@@ -40,4 +40,9 @@ require('http').createServer(function(req, res) {
 var b = bubble(function(err, file_c_data) {
   // ...
 });
+
+fs.readFile('./file_a', h(function(file_a_data) {
+  // ...
+});
+
 ```
