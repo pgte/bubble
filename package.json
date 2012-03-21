@@ -1,7 +1,7 @@
 {
   "name": "bubble",
   "description": "Domains for the poor man. Flow-control for cascading callbacks. Error handling. Aborts groups of callbacks. With timeouts.",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "author": {
     "name": "Pedro Teixeira"
   },

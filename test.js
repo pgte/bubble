@@ -1,8 +1,10 @@
 var test = require('tap').test
   , bubble = require('./')
   , fs = require('fs')
+  ;
 
 var DEFAULT_TIMEOUT = 10000
+
 
 test('figures out completion', function(t) {
 
@@ -14,7 +16,7 @@ test('figures out completion', function(t) {
 
   fs.readFile('./fixtures/exists', 'utf8', b(function(body) {
     t.ok(true, 'must reached here')
-    t.equal('ABC', body, 'body must match')
+    t.equal(body, 'ABC', 'body must match')
   }))
 })
 
@@ -34,7 +36,7 @@ test('timesout', function(t) {
 
   var b = bubble(10, function(err) {
     t.ok(!! err, 'error must exist')
-    t.equal('Timeout reached', err.message)
+    t.equal(err.message, 'Timeout reached')
     t.end()
   })
 
@@ -53,7 +55,7 @@ test('works without timeout', function(t) {
 
   fs.readFile('./fixtures/exists', 'utf8', b(function(body) {
     t.ok(true, 'must reached here')
-    t.equal('ABC', body, 'body must match')
+    t.equal(body, 'ABC', 'body must match')
   }))
 
 })
@@ -61,7 +63,7 @@ test('works without timeout', function(t) {
 test('catches thrown errors', function(t) {
   var b = bubble(10, function(err) {
     t.ok(!! err, 'error must exist')
-    t.equal('heyheyhey', err.message)
+    t.equal(err.message, 'heyheyhey')
     t.end()
   })
 
@@ -73,7 +75,7 @@ test('catches thrown errors', function(t) {
 test('can use it to return callback values', function(t) {
   var b = bubble(10, function(err, fileData) {
     t.ok(! err, 'error must not exist')
-    t.equal('ABC', fileData)
+    t.equal(fileData, 'ABC')
     t.end()
   })
 
@@ -84,11 +86,21 @@ test('can use it to return callback values', function(t) {
 test('allows nested callbacks', function(t) {
   var b = bubble(10, function(err, fileData) {
     t.ok(! err, 'error must not exist')
-    t.equal('DEF', fileData)
+    t.equal(fileData, 'DEF')
     t.end()
   })
 
   fs.readFile('./fixtures/exists', 'utf8', b(function(body) {
     fs.readFile('./fixtures/exists2', 'utf8', b())
   }))
+})
+
+test('does not throw error if first callback argument is not error', function(t) {
+  var b = bubble(function(err, value) {
+    t.ok(! err, 'error must not exist')
+    t.equal(value, 'HEYHEY')
+    t.end()
+  })
+
+  setTimeout(b(), 10, 'HEYHEY')
 })

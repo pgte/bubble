@@ -26,18 +26,22 @@ function bubble(timeout, callback) {
     }, timeout)
   }
 
-  function wrapper(cb) {
+  return function wrapper(cb) {
 
     renewed = true
 
     if (cb && (typeof cb != 'function')) { throw new Error('Please provide a callback to bubble')}
 
     return function actualHandler(err) {
-      if (err) { return done(err) }
+      var argValuesIndex = 1
+      if (err) {
+        if (err instanceof Error) { return done(err) }
+        argValuesIndex = 0
+      }
 
       if (! isDone) {
         renewed = false
-        var args = Array.prototype.slice.call(arguments, 1);
+        var args = Array.prototype.slice.call(arguments, argValuesIndex);
         if (cb) {
           try {
             cb.apply({}, args)
@@ -45,16 +49,16 @@ function bubble(timeout, callback) {
             return done(err)
           }
         } else {
-          return done.apply({}, arguments)
+          if (args[0] && ! (args[0] instanceof Error)) { args.unshift(undefined) } // insert first empty argument
+          return done.apply({}, args)
         }
         if (! renewed) {
-          return done()
+          if (args[0] && ! (args[0] instanceof Error)) { args.unshift(undefined) } // insert first empty argument
+          return done.apply({}, args)
         }
       }
     }
   }
-
-  return wrapper
 }
 
 module.exports = bubble;
