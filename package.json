@@ -1,7 +1,7 @@
 {
   "name": "bubble",
-  "description": "Domains for the poor man",
-  "version": "0.0.4",
+  "description": "Domains for the poor man. Flow-control for cascading callbacks. Error handling. Aborts groups of callbacks. With timeouts.",
+  "version": "0.0.5",
   "author": {
     "name": "Pedro Teixeira"
   },
@@ -9,7 +9,7 @@
     "type": "git",
     "url": "http://github.com/pgte/bubble.git" 
   },
-  "tags": ["flow control", "error handling", "domains"],
+  "tags": ["flow control", "error handling", "domains", "timeout", "callbacks"],
   "main": "./bubble.js",
   "engines": { "node": ">= 0.4.0" },
   "devDependencies": {

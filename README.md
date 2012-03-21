@@ -1,9 +1,10 @@
 # Bubble [![Build Status](https://secure.travis-ci.org/pgte/bubble.png)](http://travis-ci.org/pgte/bubble)
 
+Domains for the poor man.
+
+Flow-control for cascading callbacks.
 
 Aborts groups of callbacks.
-
-Domains for the poor man.
 
 With timeouts (if you will).
 
